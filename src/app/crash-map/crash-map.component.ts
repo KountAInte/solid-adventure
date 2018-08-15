@@ -2,10 +2,10 @@ import { AngularwayService } from './../angularway.service';
 import { AngularwayComponent } from './../angularway/angularway.component';
 import { element } from 'protractor';
 import { map } from 'rxjs/operators';
-import { CoursesService } from './../courses.service';
+import { CoursesService } from '../courses/courses.service'
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgmMap } from '@agm/core';
-import { AgmSnazzyInfoWindow } from '@agm/snazzy-info-window';
+
 
 
 // clase para las coordenadas

@@ -13,6 +13,14 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { BotoneraComponent } from './botonera/botonera.component';
 import { InlineSVGModule } from 'ng-inline-svg'; // para usan iconos
 import {AngularSvgIconModule}from 'angular-svg-icon'; // mas para iconos
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { AngularwayComponent } from './angularway/angularway.component';
+import {DataTablesModule} from 'angular-datatables'
+import { HomePageComponent } from './home-page/home-page.component';
+import { CrashMapComponent } from './crash-map/crash-map.component';
+import { MensajeInicialComponent } from './mensaje-inicial/mensaje-inicial.component';
+import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window/snazzy-info-window.module';
 //importo enviromen para que funcione la variable environment
 
 @NgModule({
@@ -21,25 +29,39 @@ import {AngularSvgIconModule}from 'angular-svg-icon'; // mas para iconos
     PostsComponent,
     AvbarComponent,
     AboutPageComponent,
+    NotFoundPageComponent,
+    AngularwayComponent,
+    HomePageComponent,
+    BotoneraComponent,
+    CrashMapComponent,
+    MensajeInicialComponent,
    
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    DataTablesModule,
     InlineSVGModule,
     AngularSvgIconModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCexLpFKKMYGnwWTFV5fy-r9_bf7AjsNgc'
+    }),
+    AgmSnazzyInfoWindowModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     RouterModule.forRoot([
-      { path: '', component: PostsComponent},
+      { path: '', component: HomePageComponent},
       { path: 'about', component: AboutPageComponent},
-      // { path: '**', component: NotFoundPageComponent }
+      { path: '**', component: NotFoundPageComponent }
     ]),
   ],
   
   
-  providers: [PostManPatchService],
+  providers: [
+    PostManPatchService,
+    AngularwayComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

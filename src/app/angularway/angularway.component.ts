@@ -1,9 +1,8 @@
-import { AngularwayService } from './../angularway.service';
+import {AngularwayService}from '../angularway.service'
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Subject } from 'rxjs/Subject';
-
-import 'rxjs/add/operator/map';
+import { Subject } from 'rxjs';
+import {map}from 'rxjs/operators';
 import { watch } from 'fs';
 
 // clase para las coordenadas
@@ -70,13 +69,13 @@ export class AngularwayComponent implements OnInit {
       }
     };
 
-    this.http.get('../assets/PruebaDatos.json')
-    .map(this.extractData)
-    .subscribe(markers => {
-      this.markers = markers;
-      // Calling the DT trigger to manually render the table
-      this.dtTrigger.next();
-    });
+    // this.http.get('../assets/PruebaDatos.json')
+    // .map(this.extractData)
+    // .subscribe(markers => {
+    //   this.markers = markers;
+    //   // Calling the DT trigger to manually render the table
+    //   this.dtTrigger.next();
+    // });
   }
 
   private extractData(res: Response) {
