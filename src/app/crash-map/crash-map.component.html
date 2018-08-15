@@ -1,0 +1,61 @@
+<!-- <div *ngFor="let posicion of posiciones$" >
+        <h4>{{posiciones$.latitud}}</h4>
+        <h4>{{posiciones$.longitud}}</h4>
+        <h4></h4>
+       
+    </div>  -->
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<!-- <agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker> -->
+
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<!-- <agm-map [latitude]="lat" [longitude]="lng">
+
+<agm-marker  *ngFor="let data of coordinates; let i = index" [latitude]="data.latitude" [longitude]="data.longitude"></agm-marker>
+
+</agm-map> -->
+<div id="mapa" class="angular-google-map-container">
+<agm-map #map [zoom]="12" [latitude]="lat" [longitude]="lng">
+  <agm-marker *ngFor="let x of coordinates; let i= index" (markerClick)="openWindow(x.id)" [latitude]=x.latitude [longitude]=x.longitude
+    [opacity]="6">
+    <agm-snazzy-info-window [isOpen]="isInfoWindowOpen(x.id)" [maxWidth]="150" [pointer]="'8px'" [padding]="'1px'" [showCloseButton]="true"
+      [shadow]="true" [border]="false">
+
+      <ng-template>
+
+        <div class="si-frame" style="background-color: rgba(0, 0, 0, 0.7);  border-radius: 0px; color: rgb(255, 255, 255);">
+        
+
+          
+            <div class="mapa-signos">
+              <span *ngIf="x.es_obras=='S'&& x.es_accidentes=='N'" style="font-size: 30px" class="material-icons">ic_gavel</span>
+              <span *ngIf="x.es_accidentes=='S'" class="material-icons" style="font-size: 30px">ic_report_problem</span>
+              <span *ngIf="x.es_accidentes=='N'&& x.es_obras=='N'" class="material-icons" style="font-size: 30px">ic_pie_chart_outlined</span>
+
+            <p class="texto-incidencia">{{x.tipoIncidencia}}</p>
+            <table class="table table-sm">
+              <tbody>
+                <tr>
+                  <th>inicio</th>
+                  <td>{{x.fecha|date:'MMM-dd-yy'}}</td>
+                </tr>
+                <tr>
+                  <th>fin</th>
+                  <td>{{x.fecha_fin|date:'MMM-dd-yy'}}</td>
+                </tr>
+              </tbody>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+</agm-map>
+</div>
+<!-- <button type="button" (click)="openWindow(12073)">Open InfoWindow 5</button> -->

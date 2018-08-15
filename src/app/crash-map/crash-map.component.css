@@ -1,0 +1,28 @@
+agm-map {
+    height: 700px;
+  }
+
+
+ 
+  .texto-incidencia {
+    font-family: Helvetica;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* .textoFecha {
+    font-family: Arial;
+    font-size: 6px; 
+    text-align: left; 
+  } */
+
+td{
+  text-align: right
+}
+ .material-icons {
+  float: left;
+  margin-left: -35px;
+  padding-right: 35px;
+ }
+ 

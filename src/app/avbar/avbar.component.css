@@ -1,0 +1,35 @@
+/* rule for element with name dropwodn-toggle */
+.dropdown-toggle {
+    cursor: pointer;
+
+}
+.span{
+
+    font-size: 25px;
+
+}
+
+.navbar-brand{
+   color:  rgba(24, 3, 146, 0.993);
+  
+
+}
+
+.navbar-nav{
+    padding-top: 15px;
+font-size: 20px;
+font-style: bold;
+margin-inline-start: 80px;
+}
+
+.sightBrand{
+
+    width: 50px;
+    height : 50px;
+}
+.brand-text{
+    color:  rgba(21, 3, 124, 0.993);
+ 
+    font-weight: bold;
+
+}

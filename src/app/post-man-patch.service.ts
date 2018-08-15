@@ -15,7 +15,7 @@ private _url = 'https://jsonplaceholder.typicode.com/posts';
 private _urlEmployees = '/assets/data/employees.json';
   
 getPosts(){
-    return this.http.get<any[]>(this._url);
+    return this.http.get<any[]>(this._urlEmployees);
 
   }
   getEmployees(): Observable <IEmployee[]>{

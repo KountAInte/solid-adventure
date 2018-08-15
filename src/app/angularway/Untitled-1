@@ -1,0 +1,57 @@
+
+import 'rxjs/add/operator/map';
+import { watch } from 'fs';
+
+class Person {
+  id: number;
+  firstName: string;
+  lastName: string;
+}
+
+
+@Component({
+  selector: 'app-angularway',
+  templateUrl: './angularway.component.html',
+  styleUrls: ['./angularway.component.css']
+})
+export class AngularwayComponent implements OnInit {
+  message = '';
+  dtOptions: DataTables.Settings = {};
+  constructor(private zone: NgZone, private wayServe: AngularwayService) {
+   }
+
+  someClickHandler(info: any): void {
+    this.message = info.id_incidencia + ' - ' + info.descripcion;
+  }
+
+  ngOnInit(): void {
+    this.dtOptions = {
+      ajax: '../assets/PruebaDatos.json',
+      columns: [{
+        title: 'Id',
+        data: 'id_incidencia'
+      }, {
+        title: 'descripcion',
+        data: 'descripcion'
+      }, {
+        title: 'fecha inicio',
+        data: 'fh_inicio'
+      }, {
+        title: 'fecha final',
+        data: 'fh_final'
+      }
+    ],
+      rowCallback: (row: Node, data: any[] | Object, index: number) => {
+        const self = this;
+        // Unbind first in order to avoid any duplicate handler
+        // (see https://github.com/l-lin/angular-datatables/issues/87)
+        $('td', row).unbind('click');
+        $('td', row).bind('click', () => {
+          self.wayServe.tableClickHandler(data);
+          self.someClickHandler(data);
+        });
+        return row;
+      }
+    };
+  }
+}

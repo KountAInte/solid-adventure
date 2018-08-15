@@ -1,0 +1,20 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Descripcion</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of markers">
+        <td>{{x.id_incidencia }}</td>
+        <td>{{x.nom_tipo_incidencia}}</td>
+        <td>{{x.descripcion}}</td>
+        <td>{{x.fh_inicio|date}}</td>
+        <td>{{x.fh_final|date}}</td> 
+      </tr>
+    </tbody>
+    </table>
